@@ -2,6 +2,16 @@ import React, {Component}from 'react';
 import {Card,CardBody,CardImg,CardTitle,CardText}from 'reactstrap';
 
 class DishDetail extends Component{
+    constructor(props){
+        super(props);
+        console.log("Detail Component constructor invoked")
+    }
+    componentDidMount(){
+        console.log("Detail Component componentDidMount invoked")
+    }
+    componentDidUpdate(){
+        console.log("Detail Component componentUpdate invoked")
+    }
     renderDish(dish){
         if(this.props.dish != null){
             return(
@@ -55,6 +65,7 @@ class DishDetail extends Component{
 
     }
     render(){
+        console.log("Detail Component render invoked")
         if(this.props.dish !=null){
             return(
                 <div className='container'>

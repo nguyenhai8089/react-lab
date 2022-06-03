@@ -4,8 +4,15 @@ import DishDetail from "./DishDetailComponent";
 
 
 class Menu extends Component {
+    componentDidMount(){
+        console.log("Menu Component componentDidMount invoked")
+    }
+    componentDidUpdate(){
+        console.log("Menu Component componentUpdate invoked")
+    }
     
     constructor(props){
+        console.log("Menu Component constructor invoked")
         super(props);
         this.state={
             selectedDish:null        
@@ -20,6 +27,7 @@ class Menu extends Component {
     
 
     render(){
+        console.log("Menu Component render invoked")
         const menu=this.props.dishes.map((dish)=>{
             return(
                 <div key={dish.id} className="col-12 col-md-5 mt-5">
