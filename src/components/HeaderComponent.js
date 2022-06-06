@@ -5,7 +5,7 @@ class Header extends Component{
     render(){
         return(
             <React.Fragment>
-              <Navbar drak>
+              <Navbar dark>
                   <div className='container'>
                       <NavbarBrand href="/">Ritonrante con Fusion</NavbarBrand>
 
