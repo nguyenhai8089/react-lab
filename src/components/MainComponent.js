@@ -17,14 +17,18 @@ class Main extends Component {
     }
   
   render(){
-    const HomePage=(props)=>{return(<Home/>);}
+    const HomePage=(props)=>{
+      return(
+      <Home/>
+      );
+    }
     
     return (
       <div>
         <Header/>
         <Switch>
-             <Route path="/home" componet={HomePage} />
-             <Route exact path="/menu" componet={()=><Menu dishes={this.state.dishes}/>} 
+             <Route path="/home" component={HomePage} />
+             <Route exact path="/menu" component={()=><Menu dishes={this.state.dishes}/>} 
              />
              <Redirect to='/Home'/>
 
@@ -39,3 +43,5 @@ class Main extends Component {
 }
 
 export default Main;
+
+
