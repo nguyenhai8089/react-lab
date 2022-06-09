@@ -3,7 +3,8 @@ import {Card,CardBody,CardImg,CardTitle,CardText}from 'reactstrap';
 
 
     
-   function RenderDish({dish}){        
+   function RenderDish({dish}){     
+     
             return(
                 <div className='col-12 col-md-5 mt-1'>
                     <Card>
@@ -47,7 +48,8 @@ import {Card,CardBody,CardImg,CardTitle,CardText}from 'reactstrap';
         }
 
     }
-    const DishDetail =(props)=>{        
+    const DishDetail =(props)=>{    
+                 
         if(props.dish !=null){
             return(
                 <div className='container'>
