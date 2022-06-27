@@ -1,5 +1,5 @@
 import React,{Component}from 'react';
-import {Button,Form,FormGroup,Input,Col, Label,Row,FormFeedback} from 'reactstrap';
+import {Button,Form,FormGroup,Input,Col, Label,FormFeedback} from 'reactstrap';
 
 
 class Contact extends Component {
@@ -70,7 +70,7 @@ class Contact extends Component {
         return errors;
     }
     render(){
-        const errors=this.validate(this.state.firstname,this.state.lastname,this.state.telnum,this.state.email)
+        const errors1=this.validate(this.state.firstname,this.state.lastname,this.state.telnum,this.state.email)
         return(
             <div className="container">
                 <div className="row row-content">                    
@@ -109,25 +109,25 @@ class Contact extends Component {
                                     <Label htmlFor='firstname' md={2}>First Name</Label>
                                     <Col md={10}>
                                         <Input type='text' id='firstname' name='firstname' placeholder='First Name' value={this.state.firstname} 
-                                        valid={errors.firstname===''}
-                                        invalid={errors.firstname!==''}
+                                        valid={errors1.firstname===''}      /* render ra tích xanh và ô input chuyển sang bôi màu xanh */
+                                        invalid={errors1.firstname!==''}    /* render ra nỗi chấm than và ô input chuyển sang bôi màu đỏ */
                                         onBlur={this.handleBlur('firstname')}
                                         onChange={this.handleInputChange}/>
                                         <FormFeedback>
-                                            {errors.firstname}
-                                        </FormFeedback>
+                                            {errors1.firstname}             {/* render ra đoạn thông tin báo lỗi firstname , phải truyền valid và invalid thì đoạn code này mới chạy*/} 
+                                        </FormFeedback> 
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label htmlFor='lasttname' md={2}>Last Name</Label>
                                     <Col md={10}>
                                         <Input type='text' id='lasttname' name='lastname' placeholder='Last Name' value={this.state.lastname}
-                                        valid={errors.lastname===''}
-                                        invalid={errors.lastname!==''}
+                                        valid={errors1.lastname===''}
+                                        invalid={errors1.lastname!==''}
                                         onBlur={this.handleBlur('lastname')}
                                         onChange={this.handleInputChange}/>
                                         <FormFeedback>
-                                            {errors.lastname}
+                                            {errors1.lastname}
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
@@ -135,12 +135,12 @@ class Contact extends Component {
                                     <Label htmlFor='telnum' md={2}>Contact Tel.</Label>
                                     <Col md={10}>
                                         <Input type='tel' id='telnum' name='telnum' placeholder='Tel. Number' value={this.state.telnum} 
-                                        valid={errors.telnum===''}
-                                        invalid={errors.telnum!==''}
+                                        valid={errors1.telnum===''}
+                                        invalid={errors1.telnum!==''}
                                         onBlur={this.handleBlur('telnum')}
                                         onChange={this.handleInputChange}/>
                                         <FormFeedback>
-                                            {errors.telnum}
+                                            {errors1.telnum}
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
@@ -148,12 +148,12 @@ class Contact extends Component {
                                     <Label htmlFor='email' md={2}>Email</Label>
                                     <Col md={10}>
                                         <Input type='email' id='email' name='email' placeholder='Email' value={this.state.email} 
-                                        valid={errors.email===''}
-                                        invalid={errors.email!==''}
+                                        valid={errors1.email===''}
+                                        invalid={errors1.email!==''}
                                         onBlur={this.handleBlur('email')}
                                         onChange={this.handleInputChange}/>
                                         <FormFeedback>
-                                            {errors.email}
+                                            {errors1.email}
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
