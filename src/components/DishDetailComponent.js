@@ -38,7 +38,8 @@ class RenderComments extends Component {
     
     handleSubmit(value){
         console.log('Current State is:'+JSON.stringify(value));
-        alert('Current State is:'+JSON.stringify(value));        
+        alert('Current State is:'+JSON.stringify(value));
+        this.toggleModal();
     }
     render(){
         const comments=this.props.comments
