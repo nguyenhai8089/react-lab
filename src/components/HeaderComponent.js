@@ -19,7 +19,7 @@ class Header extends Component{
     toggleModal(){
         this.setState({isModalOpen:!this.state.isModalOpen});
     }
-    handleLogin(event){
+    handleLogin=(event)=>{
         this.toggleModal();
         event.preventDefault();
         alert("Username: "+this.username.value+
@@ -87,7 +87,7 @@ class Header extends Component{
                                  <Input type='checkbox' name='remember' innerRef={(input)=>this.remember=input}></Input> Remember me
                             </Label>                            
                         </FormGroup>
-                        <Button type='submit' value='submit' color='primary'>Login</Button>
+                        <Button type='submit' value='submit' color='primary'>Login</Button>                        
                     </Form>
 
                 </ModalBody>
