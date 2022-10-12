@@ -80,7 +80,7 @@ class Header extends Component{
                         </FormGroup>
                         <FormGroup>
                             <Label htmlFor='password'>Password</Label>
-                            <Input type='passwork' id='password' name='password' innerRef={(input)=>this.password=input}></Input>
+                            <Input type='password' id='password' name='password' innerRef={(input)=>this.password=input}></Input>
                         </FormGroup>
                         <FormGroup check>
                             <Label check>
