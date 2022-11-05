@@ -11,7 +11,7 @@ import Contact from './ContactComponent';
 import {connect} from 'react-redux';
 import About from './AboutComponent';
 import { addComment,fetchDishes } from '../redux/ActionCreators';
-import { bindActionCreators } from 'redux';
+
 
 const mapStateToProps = (state)=>{
   return{
