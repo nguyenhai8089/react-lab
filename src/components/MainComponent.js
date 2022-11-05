@@ -11,6 +11,7 @@ import Contact from './ContactComponent';
 import {connect} from 'react-redux';
 import About from './AboutComponent';
 import { addComment,fetchDishes } from '../redux/ActionCreators';
+import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state)=>{
   return{
@@ -22,21 +23,21 @@ const mapStateToProps = (state)=>{
 };
 const mapDispatchToProps = (dispatch)=>({
   addComment:(dishId, rating, author, comment)=>dispatch(addComment(dishId, rating,author,comment)),
-  fetchDishes:()=>{
+  fetchDishes:()=>{                    /* truyền phương thức "fetchDishes" gọi đến file quản lý ActionCreators */
     dispatch(fetchDishes())
   }
 })
 
 class Main extends Component {
   
-  componentDidMount(){
+  componentDidMount(){                /* khởi chạy theo "life circle", hàm này được gọi sau khi chạy hàm render() trong life circle */
     this.props.fetchDishes();
   }
   render() {
     const HomePage = () => {
       return (
         <Home 
-          dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}
+          dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}    /* truy cập vào props truyền qua redux tìm tới --> tại file (configureStore.js)-> dishes:Dishes --> đi tới file reducer của dish (file dishes.js)-> tại file (dishes.js) nhận state được cập nhận giá trị khi action được gọi "ActionTypes.ADD_DISHES",lý do "ActionTypes.ADD_DISHES" do life circle gọi hàm componentDidMount()-> tới file actionCreator.js ->fetchDishes()->dispatch(addDishes(DISHES))->gọi action "addDishes(DISHES)" giá trị dish={this.props.dishes.dishes} = action.payload==={DISHES}*/
           dishesLoading={this.props.dishes.isLoading}
           dishesErrMess={this.props.dishes.errMess}
           promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
@@ -46,7 +47,7 @@ class Main extends Component {
     }
     const DishWithId = ({match}) => {
       return(
-          <DishDetail dish={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
+          <DishDetail dish={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]}  /* đọc chú thích dish của <Home/> bên trên */
             isLoading={this.props.dishes.isLoading}
             errMess={this.props.dishes.errMess}
             comments={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))}
@@ -62,7 +63,7 @@ class Main extends Component {
           <Route path='/home' component={HomePage} />
           <Route path='/menu/:dishId' component={DishWithId} />
           <Route exact path='/aboutus' component={()=> <About leaders={this.props.leaders}/>} />
-          <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes.dishes} />} />
+          <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes.dishes} />} />           {/* đọc chú thích dish của <Home/> bên trên */}
           <Route exact path='/contactus' component={Contact} />
           <Redirect to="/home" />
         </Switch>
