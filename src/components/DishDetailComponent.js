@@ -5,6 +5,7 @@ import dateFormat from 'dateformat';
 import {Modal,Row,Label,Col} from 'reactstrap';
 import { LocalForm,Control } from 'react-redux-form';
 import {Loading} from './LoadingComponent'
+import { baseUrl } from '../shared/baseUrl';
 
 
     
@@ -13,7 +14,7 @@ import {Loading} from './LoadingComponent'
             return(
                 <div className='col-12 col-md-5 mt-1'>
                     <Card>
-                        <CardImg key={dish.id} width="100%" src={dish.image} atl={dish.name}/>
+                        <CardImg key={dish.id} width="100%" src={baseUrl+dish.image} atl={dish.name}/>
                         <CardBody>
                             <CardTitle>{dish.name}</CardTitle>
                             <CardText>{dish.description}</CardText>
