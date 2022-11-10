@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card,CardBody,Media,Breadcrumb,BreadcrumbItem, CardHeader } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {baseUrl} from '../shared/baseUrl'
 
 function About(props) {
     const leaders =props.leaders.map((leader)=>{
         return(
             <div className='container'>
                  <div className='row-container'>
-                    <img src={leader.image} alt={leader.name}/>
+                    <img src={baseUrl+leader.image} alt={leader.name}/>
                     <div className='div'>
                          <h3 className='leader'>{leader.name}</h3>
                          <p className="leader">{leader.designation}</p>

@@ -10,7 +10,7 @@ import{Switch,Route,Redirect, withRouter} from 'react-router-dom';
 import Contact from './ContactComponent';
 import {connect} from 'react-redux';
 import About from './AboutComponent';
-import { addComment,fetchDishes,fetchPromos,fetchComments } from '../redux/ActionCreators';
+import { addComment,fetchDishes,fetchPromos,fetchComments,fetchLeaders } from '../redux/ActionCreators';
 import {actions} from 'react-redux-form';
 
 
@@ -33,6 +33,9 @@ const mapDispatchToProps = (dispatch)=>({
   },
   fetchComments:()=>{
     dispatch(fetchComments())
+  },
+  fetchLeaders:()=>{
+    dispatch(fetchLeaders())
   }
 })
 
@@ -42,6 +45,7 @@ class Main extends Component {
     this.props.fetchDishes();
     this.props.fetchComments();
     this.props.fetchPromos();
+    this.props.fetchLeaders();
   }
   render() {
     const HomePage = () => {
@@ -53,7 +57,9 @@ class Main extends Component {
           promotion={this.props.promotions.promotions.filter((promo) => promo.featured)[0]}
           promosLoading={this.props.promotions.isLoading}
           promosErrMess={this.props.promotions.errMess}
-          leader={this.props.leaders.filter((leader) => leader.featured)[0]}          
+          leader={this.props.leaders.leaders.filter((leader) => leader.featured)[0]}
+          leadersLoading={this.props.leaders.isLoading}
+          leadersErrMess={this.props.leaders.errMess}          
         />
       );
     }
@@ -75,7 +81,7 @@ class Main extends Component {
         <Switch>  
           <Route path='/home' component={HomePage} />
           <Route path='/menu/:dishId' component={DishWithId} />
-          <Route exact path='/aboutus' component={()=> <About leaders={this.props.leaders}/>} />
+          <Route exact path='/aboutus' component={()=> <About leaders={this.props.leaders.leaders}/>} />
           <Route
             exact path='/menu' component={
                                             () => <Menu 
