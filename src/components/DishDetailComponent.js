@@ -25,7 +25,7 @@ import { baseUrl } from '../shared/baseUrl';
             );    
     }
    
-    function RenderComments({comments,dishId,addComment}) {
+    function RenderComments({comments,dishId,postComment}) {
         if (comments != null)
         return (
             <div className ="col-12 col-md-5 m-1">
@@ -41,7 +41,7 @@ import { baseUrl } from '../shared/baseUrl';
                         )
                     })}
                 </ul>
-                <CommentForm dishId={dishId} addComment={addComment}/>
+                <CommentForm dishId={dishId} postComment={postComment}/>
             </div>
         );
         else
@@ -86,7 +86,7 @@ import { baseUrl } from '../shared/baseUrl';
                     <div className='row'>
                         <RenderDish dish={props.dish}/>
                         <RenderComments comments={props.comments}
-                            addComment={props.addComment}
+                            postComment={props.postComment}
                             dishId={props.dish.id}
                         
                         /> 
@@ -119,8 +119,8 @@ import { baseUrl } from '../shared/baseUrl';
             this.setState({isModalOpen:!this.state.isModalOpen})
         }
         handleSubmit(value){ 
-            console.log(this.props.addComment)           
-            this.props.addComment(
+            console.log(this.props.postComment)           
+            this.props.postComment(
                 this.props.dishId,
                 value.rating,
                 value.author,
